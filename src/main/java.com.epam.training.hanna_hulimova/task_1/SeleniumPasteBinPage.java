@@ -5,17 +5,15 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.AbstractPage;
 import util.ConfigProvider;
 import util.CustomConditions;
 
 import java.time.Duration;
 
-public class SeleniumPasteBinPage {
-
-    private WebDriver driver;
+public class SeleniumPasteBinPage extends AbstractPage {
 
     @FindBy(id = "postform-text")
     private WebElement pasteTextArea;
@@ -36,8 +34,7 @@ public class SeleniumPasteBinPage {
     private WebElement createPasteButton;
 
     public SeleniumPasteBinPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public SeleniumPasteBinPage openPage() {

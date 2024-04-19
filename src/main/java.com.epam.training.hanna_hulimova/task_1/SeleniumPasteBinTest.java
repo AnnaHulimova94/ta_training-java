@@ -21,6 +21,8 @@ public class SeleniumPasteBinTest {
         driver.quit();
     }
 
+    //The website is protected from robot.
+
     @Test
     public void test_create_paste_bin() {
         SeleniumPasteBinPage pasteBinPage = new SeleniumPasteBinPage(driver);
