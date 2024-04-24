@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.CustomConditions;
 
 import java.time.Duration;
 
@@ -33,8 +34,17 @@ public class SeleniumComputeEnginePage {
     @FindBy(xpath = "//div[@data-field-type='174']")
     private WebElement selectNumberOfGPU;
 
+    @FindBy(xpath = "//div[@data-field-type='180']")
+    private WebElement selectLocalSSD;
+
+    @FindBy(xpath = "//div[@data-field-type='115']")
+    private WebElement selectRegion;
+
     @FindBy(xpath = "//button[@class='glue-cookie-notification-bar__accept']")
     private WebElement closeInfoButton;
+
+    @FindBy(xpath = "//a[@aria-label='Open detailed view']")
+    private WebElement previewLink;
 
 
     public SeleniumComputeEnginePage(WebDriver driver) {
@@ -106,6 +116,62 @@ public class SeleniumComputeEnginePage {
         return this;
     }
 
+    public SeleniumComputeEnginePage setLocalSSD(LocalSSD localSSD) {
+        selectLocalSSD.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(localSSD.xpath)))
+                .click();
+
+        return this;
+    }
+
+    public SeleniumComputeEnginePage setRegion(Region region) {
+        selectRegion.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(region.xpath)))
+                .click();
+
+        return this;
+    }
+
+    public SeleniumComputeEnginePage setCommittedUsage(CommittedUsage committedUsage) {
+        driver.findElement(By.xpath(committedUsage.xpath)).findElement(By.xpath("..")).click();
+
+        return this;
+    }
+
+    public SeleniumEstimatePreviewPage openPreview() {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException ignored){}
+
+        previewLink.click();
+
+        return new SeleniumEstimatePreviewPage(driver);
+    }
+
+    public enum Region {
+        OREGON("//li[@data-value='us-west1']");
+
+        String xpath;
+
+        Region(String xpath) {
+            this.xpath = xpath;
+        }
+    }
+
+    public enum LocalSSD {
+        ZERO("//ul[@aria-label='Local SSD']//li[@data-value='0']"),
+        ONEx375("//ul[@aria-label='Local SSD']//li[@data-value='1']"),
+        TWOx375("//ul[@aria-label='Local SSD']//li[@data-value='2']");
+
+        String xpath;
+
+        LocalSSD(String xpath) {
+            this.xpath = xpath;
+        }
+    }
+
     public enum OperationSystemType {
         FREE("//li[@data-value='free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license']");
 
@@ -129,8 +195,8 @@ public class SeleniumComputeEnginePage {
 
     public enum MachineType {
         CUSTOM("//li[@data-value='custom']"),
-        STANDARD_4("//li[@data-value='n1-standard-4']"),
-        STANDARD_8("//li[@data-value='n1-standard-8']");
+        N1_STANDARD_4("//li[@data-value='n1-standard-4']"),
+        N1_STANDARD_8("//li[@data-value='n1-standard-8']");
 
         String xpath;
 
@@ -158,6 +224,18 @@ public class SeleniumComputeEnginePage {
         String xpath;
 
         NumberOfGPU(String xpath) {
+            this.xpath = xpath;
+        }
+    }
+
+    public enum CommittedUsage {
+        NONE("//input[@id='none']"),
+        ONE_YEAR("//input[@id='1-year']"),
+        THREE_YEARS("//input[@id='3-years']");
+
+        String xpath;
+
+        CommittedUsage(String xpath) {
             this.xpath = xpath;
         }
     }
