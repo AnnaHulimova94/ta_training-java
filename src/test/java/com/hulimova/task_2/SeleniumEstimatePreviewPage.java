@@ -1,4 +1,4 @@
-package task_2;
+package com.hulimova.task_2;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

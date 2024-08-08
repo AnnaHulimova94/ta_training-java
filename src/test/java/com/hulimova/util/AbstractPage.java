@@ -1,4 +1,4 @@
-package util;
+package com.hulimova.util;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

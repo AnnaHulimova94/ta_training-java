@@ -1,4 +1,4 @@
-package task_2;
+package com.hulimova.task_2;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.AbstractPage;
-import util.ConfigProvider;
-import util.CustomConditions;
+import com.hulimova.util.AbstractPage;
+import com.hulimova.util.ConfigProvider;
+import com.hulimova.util.CustomConditions;
 
 import java.time.Duration;
 

@@ -1,4 +1,4 @@
-package task_2;
+package com.hulimova.task_2;
 
 import com.typesafe.config.Config;
 import org.junit.After;
@@ -7,9 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import util.ConfigProvider;
-
-import java.util.List;
+import com.hulimova.util.ConfigProvider;
 
 public class SeleniumGoogleCloudPageTest {
 

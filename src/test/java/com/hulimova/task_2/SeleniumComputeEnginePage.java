@@ -1,4 +1,4 @@
-package task_2;
+package com.hulimova.task_2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.CustomConditions;
 
 import java.time.Duration;
 
